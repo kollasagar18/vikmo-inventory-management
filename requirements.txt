@@ -85,9 +85,9 @@ MarkupSafe==3.0.2
 matplotlib==3.10.8
 moviepy==1.0.3
 multidict==6.6.4
-mysql==0.0.3
+
 mysql-connector-python==9.4.0
-mysqlclient==2.2.7
+
 num2words==0.5.14
 numpy==2.0.2
 oauthlib==3.2.2
