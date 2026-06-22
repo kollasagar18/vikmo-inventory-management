@@ -27,8 +27,12 @@ SECRET_KEY = 'django-insecure-4x)3evsrbqjfclaf5zi=c12sy3nkc5v9-9i_78xbkrfq#)@wy+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://vikmo-inventory-management-production.up.railway.app",
+]
 
 # Application definition
 
