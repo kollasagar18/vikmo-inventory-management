@@ -24,10 +24,12 @@ function CreateDealer() {
 
     try {
 
-      await api.post(
+      const res = await api.post(
         "dealers/",
         dealer
       );
+
+      console.log(res.data);
 
       alert("Dealer Created Successfully");
 
@@ -41,9 +43,15 @@ function CreateDealer() {
 
     } catch (error) {
 
-      console.log(error);
-      alert("Error Creating Dealer");
+      console.log(error.response?.data);
 
+      alert(
+        JSON.stringify(
+          error.response?.data,
+          null,
+          2
+        )
+      );
     }
   };
 
@@ -64,6 +72,7 @@ function CreateDealer() {
             placeholder="Dealer Code"
             value={dealer.dealer_code}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -75,6 +84,7 @@ function CreateDealer() {
             placeholder="Dealer Name"
             value={dealer.name}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -86,6 +96,7 @@ function CreateDealer() {
             placeholder="Email"
             value={dealer.email}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -97,6 +108,7 @@ function CreateDealer() {
             placeholder="Phone"
             value={dealer.phone}
             onChange={handleChange}
+            required
           />
         </div>
 
@@ -107,6 +119,8 @@ function CreateDealer() {
             placeholder="Address"
             value={dealer.address}
             onChange={handleChange}
+            rows="3"
+            required
           />
         </div>
 

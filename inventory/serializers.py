@@ -1,5 +1,8 @@
 from rest_framework import serializers
 
+from .models import Product, Inventory
+
+
 from .models import (
     Product,
     Inventory,
@@ -9,11 +12,26 @@ from .models import (
 )
 
 
+from rest_framework import serializers
+from .models import Product, Inventory
+
 class ProductSerializer(serializers.ModelSerializer):
+
+    available_quantity = serializers.SerializerMethodField()
+
     class Meta:
         model = Product
         fields = "__all__"
 
+    def get_available_quantity(self, obj):
+        try:
+            return obj.inventory.available_quantity
+        except:
+            return 0
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data["available_quantity"] = self.get_available_quantity(instance)
+        return data
 
 class InventorySerializer(serializers.ModelSerializer):
     product_name = serializers.CharField(

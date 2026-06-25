@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-4x)3evsrbqjfclaf5zi=c12sy3nkc5v9-9i_78xbkrfq#)@wy+
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"," 192.168.1.2"]
 
 CSRF_TRUSTED_ORIGINS = [
     "https://vikmo-inventory-management-production.up.railway.app",
@@ -51,14 +51,10 @@ INSTALLED_APPS = [
     #'django_filters',
     'inventory',
 ]
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -141,5 +137,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ALLOW_ALL_ORIGINS = True
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+

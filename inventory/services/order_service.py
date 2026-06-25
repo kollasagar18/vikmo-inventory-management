@@ -22,7 +22,16 @@ def update_order_total(order):
     order.save(update_fields=["total_amount"])
 
     return order.total_amount
+from rest_framework.exceptions import ValidationError
+
 def create_order_item(order, product, quantity):
+
+    inventory = product.inventory
+
+    if quantity > inventory.available_quantity:
+        raise ValidationError(
+            f"Only {inventory.available_quantity} items available"
+        )
 
     unit_price = product.price
 

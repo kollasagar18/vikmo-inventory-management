@@ -62,6 +62,21 @@ function OrderProcessing() {
 
 const addItem = async () => {
 
+  // Validation
+  if (!productId) {
+    alert("Please Select Product");
+    return;
+  }
+
+  if (!quantity) {
+    alert("Please Enter Quantity");
+    return;
+  }
+  if (quantity > 1000) {
+  alert("Quantity cannot exceed 1000");
+  return;
+}
+
   try {
 
     const res = await api.post(
@@ -73,7 +88,7 @@ const addItem = async () => {
       }
     );
 
-    console.log("ITEM CREATED:", res.data);
+    console.log(res.data);
 
     alert("Item Added Successfully");
 
@@ -85,9 +100,7 @@ const addItem = async () => {
     console.log(error.response?.data);
 
     alert(
-      JSON.stringify(
-        error.response?.data
-      )
+      JSON.stringify(error.response?.data)
     );
 
   }
@@ -181,13 +194,13 @@ const addItem = async () => {
               </option>
 
               {products.map((product) => (
-                <option
-                  key={product.id}
-                  value={product.id}
-                >
-                  {product.name}
-                </option>
-              ))}
+              <option
+                key={product.id}
+                value={product.id}
+              >
+                {product.name} (Stock: {product.available_quantity})
+              </option>
+            ))}
             </select>
 
             <input
