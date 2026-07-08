@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vikmo_db',
         'USER': 'postgres',
-        'PASSWORD': '1234',  # <-- wrong password
+        'PASSWORD': '1234',  
         'HOST': 'localhost',
         'PORT': '5432',
     }
